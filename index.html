@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="แฟ้มสะสมผลงานของ ด.ช. กิจพัฒน์ บัวแย้ม สำหรับการสมัครเข้าศึกษาต่อระดับชั้น ม.4">
+  <title>กิจพัฒน์ บัวแย้ม | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { prompt: ['Prompt', 'sans-serif'] },
+          colors: {
+            ink: '#10233f',
+            navy: '#183b66',
+            sky: '#4bb9e8',
+            mist: '#eef7fb',
+            amber: '#f4b942'
+          },
+          boxShadow: { soft: '0 18px 50px rgba(16, 35, 63, 0.10)' }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #f8fafc; }
+    .hero-grid { background-image: linear-gradient(rgba(75, 185, 232, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(75, 185, 232, .08) 1px, transparent 1px); background-size: 36px 36px; }
+    .section-kicker::before { content: ''; display: inline-block; width: 2.75rem; height: 2px; margin-right: .75rem; vertical-align: middle; background: #f4b942; }
+    .timeline-line { position: absolute; left: 9px; top: 1rem; bottom: 1rem; width: 2px; background: #c8eaf7; }
+    .timeline-dot { position: relative; z-index: 1; flex: 0 0 auto; width: 20px; height: 20px; border: 4px solid #fff; border-radius: 9999px; background: #4bb9e8; box-shadow: 0 0 0 2px #4bb9e8; }
+    .progress-fill { width: 0; animation: grow 1.2s ease-out forwards; }
+    @keyframes grow { to { width: var(--progress); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body class="font-prompt text-ink antialiased">
+  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 lg:px-8" aria-label="เมนูหลัก">
+      <a href="#home" class="flex items-center gap-3 font-semibold text-navy" aria-label="กลับไปหน้าแรก">
+        <span class="grid h-10 w-10 place-items-center rounded-xl bg-navy text-lg text-white">ก</span>
+        <span class="hidden sm:block">Kitchaphat <span class="font-light text-sky">Portfolio</span></span>
+      </a>
+      <button id="menu-toggle" class="grid h-10 w-10 place-items-center rounded-lg text-navy md:hidden" aria-controls="site-menu" aria-expanded="false" aria-label="เปิดเมนู">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div id="site-menu" class="absolute left-0 right-0 top-full hidden border-b border-slate-200 bg-white px-5 py-4 md:static md:flex md:items-center md:gap-8 md:border-0 md:p-0">
+        <a class="nav-link py-2 text-sm font-medium text-slate-600 transition hover:text-navy" href="#about">About</a>
+        <a class="nav-link py-2 text-sm font-medium text-slate-600 transition hover:text-navy" href="#skills">Skills</a>
+        <a class="nav-link py-2 text-sm font-medium text-slate-600 transition hover:text-navy" href="#portfolio">Portfolio</a>
+        <a class="nav-link py-2 text-sm font-medium text-slate-600 transition hover:text-navy" href="#motivation">Motivation</a>
+        <a class="nav-link py-2 text-sm font-medium text-slate-600 transition hover:text-navy" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero-grid overflow-hidden border-b border-sky/20 bg-mist">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 md:grid-cols-[1.15fr_.85fr] md:py-28 lg:px-8">
+        <div>
+          <p class="section-kicker mb-5 text-sm font-semibold uppercase tracking-[.16em] text-navy">Who I am</p>
+          <h1 class="max-w-3xl text-4xl font-semibold leading-tight text-navy sm:text-5xl lg:text-6xl">สวัสดีครับ ผมชื่อ ด.ช. กิจพัฒน์ บัวแย้ม</h1>
+          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">นักเรียนชั้น ม.3 ผู้หลงใหลในตัวเลข วิทยาศาสตร์ และภาษาอังกฤษ</p>
+          <a href="#portfolio" class="mt-9 inline-flex items-center gap-3 rounded-lg bg-navy px-6 py-3.5 font-medium text-white shadow-lg shadow-navy/20 transition hover:-translate-y-0.5 hover:bg-ink">ดูผลงานของฉัน <i class="fa-solid fa-arrow-down text-sm text-sky"></i></a>
+        </div>
+        <div class="mx-auto w-full max-w-sm md:ml-auto">
+          <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] border-8 border-white bg-white shadow-soft">
+            <div class="absolute inset-0 grid place-items-center bg-gradient-to-br from-sky/20 via-white to-amber/20">
+              <div class="text-center text-sky/70"><i class="fa-solid fa-user text-7xl"></i><p class="mt-4 text-sm font-medium">Profile Image</p></div>
+            </div>
+            <div class="absolute bottom-5 left-5 rounded-xl bg-white/90 px-4 py-3 shadow-sm"><p class="text-xs text-slate-500">Student portfolio</p><p class="font-semibold text-navy">M.4 Admission 2026</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="scroll-mt-24 bg-white py-20 md:py-28">
+      <div class="mx-auto grid max-w-6xl gap-14 px-5 md:grid-cols-2 md:gap-20 lg:px-8">
+        <div>
+          <p class="section-kicker text-sm font-semibold uppercase tracking-[.16em] text-navy">Where &amp; When</p>
+          <h2 class="mt-4 text-3xl font-semibold text-navy sm:text-4xl">ประวัติส่วนตัวและการศึกษา</h2>
+          <p class="mt-6 text-base leading-loose text-slate-600">ผมเป็นนักเรียนจากโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย ที่มีความมุ่งมั่นในการพัฒนาตนเองอย่างต่อเนื่อง โดยเฉพาะในสายวิชาคณิตศาสตร์และวิทยาศาสตร์ รวมถึงการใช้ภาษาอังกฤษในการค้นคว้าข้อมูลและสื่อสาร</p>
+        </div>
+        <div class="relative pl-1">
+          <div class="timeline-line"></div>
+          <div class="relative flex gap-5 pb-9"><span class="timeline-dot mt-1"></span><div><p class="mb-1 text-sm font-semibold text-sky">M.1</p><p class="leading-relaxed text-slate-700">ม.1 - เริ่มต้นค้นคว้าในวิชาคณิตศาสตร์และวิทยาศาสตร์</p></div></div>
+          <div class="relative flex gap-5 pb-9"><span class="timeline-dot mt-1"></span><div><p class="mb-1 text-sm font-semibold text-sky">M.2</p><p class="leading-relaxed text-slate-700">ม.2 - พัฒนาโครงงานวิชาการระดับโรงเรียน</p></div></div>
+          <div class="relative flex gap-5"><span class="timeline-dot mt-1 bg-amber shadow-amber"></span><div><p class="mb-1 text-sm font-semibold text-amber-600">M.3</p><p class="leading-relaxed text-slate-700">ม.3 - แข่งขันและทำโครงงานวิทยาศาสตร์</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="scroll-mt-24 bg-navy py-20 text-white md:py-28">
+      <div class="mx-auto grid max-w-6xl gap-14 px-5 md:grid-cols-[.75fr_1.25fr] md:gap-24 lg:px-8">
+        <div><p class="section-kicker text-sm font-semibold uppercase tracking-[.16em] text-sky">How I grow</p><h2 class="mt-4 text-3xl font-semibold sm:text-4xl">ทักษะและความถนัด</h2><p class="mt-6 leading-loose text-slate-300">นอกจากทักษะด้านวิชาการแล้ว ยังมีทักษะด้านการแก้ปัญหา (Problem Solving) และการทำงานเป็นทีม (Teamwork)</p></div>
+        <div class="space-y-7">
+          <div><div class="mb-2 flex justify-between text-sm"><span>Mathematics (คณิตศาสตร์)</span><span class="font-semibold text-sky">90%</span></div><div class="h-3 overflow-hidden rounded-full bg-white/15"><div class="progress-fill h-full rounded-full bg-sky" style="--progress: 90%"></div></div></div>
+          <div><div class="mb-2 flex justify-between text-sm"><span>Science (วิทยาศาสตร์)</span><span class="font-semibold text-sky">85%</span></div><div class="h-3 overflow-hidden rounded-full bg-white/15"><div class="progress-fill h-full rounded-full bg-sky" style="--progress: 85%; animation-delay: .15s"></div></div></div>
+          <div><div class="mb-2 flex justify-between text-sm"><span>English (ภาษาอังกฤษ)</span><span class="font-semibold text-amber">95%</span></div><div class="h-3 overflow-hidden rounded-full bg-white/15"><div class="progress-fill h-full rounded-full bg-amber" style="--progress: 95%; animation-delay: .3s"></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="scroll-mt-24 bg-slate-50 py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-5 lg:px-8"><div class="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><p class="section-kicker text-sm font-semibold uppercase tracking-[.16em] text-navy">What I have done</p><h2 class="mt-4 text-3xl font-semibold text-navy sm:text-4xl">ผลงานเด่นที่ภาคภูมิใจ</h2></div><p class="max-w-xs text-sm leading-relaxed text-slate-500">เรียนรู้จากสิ่งที่ลงมือทำ และเติบโตขึ้นในทุกโครงงาน</p></div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1"><div class="grid aspect-[16/10] place-items-center bg-mist text-sky"><i class="fa-solid fa-flask-vial text-5xl"></i></div><div class="p-6"><h3 class="text-xl font-semibold text-navy">รางวัล/โครงงานวิทยาศาสตร์</h3><p class="mt-3 text-sm leading-loose text-slate-600">คำอธิบาย: การทำโครงงานเกี่ยวกับ การพัฒนาเครื่องมือสำหรับติดตามค่าธาตุอาหารหลักที่พืชต้องการในแปลงเพาะปลูกพืช</p></div></article>
+          <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1"><div class="grid aspect-[16/10] place-items-center bg-amber/15 text-amber-600"><i class="fa-solid fa-language text-5xl"></i></div><div class="p-6"><h3 class="text-xl font-semibold text-navy">กิจกรรมค่าย/ภาษาอังกฤษ</h3><p class="mt-3 text-sm leading-loose text-slate-600">คำอธิบาย: เข้าร่วมกิจกรรมทดสอบทักษะภาษาอังกฤษ ASMO2567</p></div></article>
+          <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1"><div class="grid aspect-[16/10] place-items-center bg-navy text-white"><i class="fa-solid fa-lightbulb text-5xl text-sky"></i></div><div class="p-6"><h3 class="text-xl font-semibold text-navy">ผลงานและกิจกรรมอื่น ๆ</h3><p class="mt-3 text-sm leading-loose text-slate-600">พื้นที่สำหรับรวบรวมผลงาน กิจกรรม และประสบการณ์ที่ได้เรียนรู้เพิ่มเติม</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="motivation" class="scroll-mt-24 bg-white py-20 md:py-28"><div class="mx-auto max-w-4xl px-5 text-center lg:px-8"><p class="section-kicker text-sm font-semibold uppercase tracking-[.16em] text-navy">Why this path</p><h2 class="mt-4 text-3xl font-semibold text-navy sm:text-4xl">เป้าหมายและแรงบันดาลใจ</h2><p class="mt-8 text-lg leading-loose text-slate-600">ทำไมผมถึงอยากเข้าศึกษาต่อในระดับชั้น ม.4 ที่นี่? เพราะผมเชื่อว่าศักยภาพด้านวิทย์-คณิต-อังกฤษ ของผม จะสามารถต่อยอดและพัฒนาได้อย่างก้าวกระโดดภายใต้สภาพแวดล้อมและหลักสูตรของโรงเรียนแห่งนี้ ผมมีความฝันที่จะนำความรู้ไปประยุกต์ใช้ในสายอาชีพ จิตแพทย์ ในอนาคต</p></div></section>
+
+    <section id="contact" class="scroll-mt-24 bg-mist py-20 md:py-24"><div class="mx-auto max-w-6xl px-5 lg:px-8"><div class="grid gap-10 md:grid-cols-[.8fr_1.2fr] md:items-center"><div><p class="section-kicker text-sm font-semibold uppercase tracking-[.16em] text-navy">How to reach me</p><h2 class="mt-4 text-3xl font-semibold text-navy sm:text-4xl">ช่องทางการติดต่อ</h2></div><div class="grid gap-4 sm:grid-cols-2"><a class="flex items-center gap-4 rounded-xl border border-white bg-white p-5 shadow-sm transition hover:border-sky" href="mailto:kitchaphat.bua@pccpl.ac.th"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky/15 text-sky"><i class="fa-solid fa-envelope"></i></span><span class="min-w-0"><span class="block text-xs text-slate-500">Email</span><span class="block truncate text-sm font-medium text-navy">kitchaphat.bua@pccpl.ac.th</span></span></a><a class="flex items-center gap-4 rounded-xl border border-white bg-white p-5 shadow-sm transition hover:border-sky" href="tel:0855265354"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-amber/20 text-amber-600"><i class="fa-solid fa-phone"></i></span><span><span class="block text-xs text-slate-500">Phone</span><span class="block text-sm font-medium text-navy">0855265354</span></span></a></div></div></div></section>
+  </main>
+
+  <footer class="bg-ink px-5 py-6 text-center text-sm text-slate-300"><p>© 2026 กิจพัฒน์ บัวแย้ม. All Rights Reserved.</p></footer>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const siteMenu = document.getElementById('site-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      siteMenu.classList.toggle('hidden', isOpen);
+      menuToggle.querySelector('i').className = isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
+    });
+    document.querySelectorAll('.nav-link').forEach((link) => link.addEventListener('click', () => {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      siteMenu.classList.add('hidden');
+      menuToggle.querySelector('i').className = 'fa-solid fa-bars';
+    }));
+  </script>
+</body>
+</html>
