@@ -5,23 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="แฟ้มสะสมผลงานของ ด.ช. กิจพัฒน์ บัวแย้ม สำหรับการสมัครเข้าศึกษาต่อระดับชั้น ม.4">
+    <meta name="theme-color" content="#0B1F3A">
     <title>กิจพัฒน์ บัวแย้ม | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600&family=Prompt:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        // ตั้งธีมก่อนหน้าเว็บแสดงผล จะได้ไม่กะพริบ
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('theme'); } catch (e) { }
+            if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+
     <style>
         :root {
             --paper: #F4F8FD;
-            --white: #FFFFFF;
-            --ink: #0F2A4A;
-            --muted: #4F6480;
+            --card: #FFFFFF;
+            --ink: #0B1F3A;
+            --muted: #4D6280;
             --line: #D3DEEB;
-            --grid: rgba(37, 99, 235, 0.07);
-            --blue: #2563EB;
-            --blue-soft: #E3ECFD;
-            --hl: #FFE066;
-            --teal: #0E9F8E;
-            --rose: #E0507A;
+            --grid: rgba(47, 91, 255, 0.07);
+            --blue: #2F5BFF;
+            --blue-soft: #E4EBFF;
+            --hl: #FFD93D;
+            --teal: #12B5A0;
+            --rose: #FF5C8A;
+            --deep: #0B1F3A;
+            --on-deep: #E6EEFB;
+            --shadow: 0 18px 40px rgba(11, 31, 58, 0.10);
+        }
+
+        :root[data-theme="dark"] {
+            --paper: #08101F;
+            --card: #111C33;
+            --ink: #EAF0FB;
+            --muted: #94A7C4;
+            --line: #223250;
+            --grid: rgba(255, 255, 255, 0.04);
+            --blue: #6C8CFF;
+            --blue-soft: #16264A;
+            --hl: #FFD93D;
+            --teal: #2FD9C3;
+            --rose: #FF7AA2;
+            --deep: #0D1A33;
+            --on-deep: #E6EEFB;
+            --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
         }
 
         * { box-sizing: border-box; }
@@ -34,37 +66,48 @@
             color: var(--ink);
             line-height: 1.75;
             background-color: var(--paper);
-            /* graph-paper background */
             background-image:
                 linear-gradient(var(--grid) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-            background-size: 32px 32px;
+            background-size: 34px 34px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         h1, h2, h3 {
             font-family: 'Prompt', 'Noto Sans Thai', sans-serif;
-            line-height: 1.3;
+            line-height: 1.25;
             margin: 0;
         }
 
         p { margin: 0; }
 
         .wrap {
-            max-width: 1040px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 22px;
         }
 
-        section { scroll-margin-top: 84px; }
+        section { scroll-margin-top: 80px; }
+
+        /* ---------- Scroll progress ---------- */
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0;
+            z-index: 100;
+            background: linear-gradient(90deg, var(--blue), var(--teal), var(--hl));
+        }
 
         /* ---------- Nav ---------- */
         .nav {
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(244, 248, 253, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--line);
         }
 
@@ -73,6 +116,7 @@
             align-items: center;
             justify-content: space-between;
             height: 68px;
+            gap: 12px;
         }
 
         .brand {
@@ -91,14 +135,16 @@
             border-radius: 12px;
             display: grid;
             place-items: center;
-            background: var(--ink);
+            background: var(--deep);
             color: var(--hl);
             font-size: 1.15rem;
         }
 
+        .nav-right { display: flex; align-items: center; gap: 8px; }
+
         .nav-links {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -117,50 +163,82 @@
 
         .nav-links a:hover { background: var(--blue-soft); color: var(--blue); }
 
-        .menu-btn {
-            display: none;
+        .icon-btn {
             width: 42px;
             height: 42px;
             border-radius: 12px;
             border: 1px solid var(--line);
-            background: var(--white);
-            cursor: pointer;
+            background: var(--card);
             color: var(--ink);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            padding: 0;
         }
 
+        .icon-btn:hover { border-color: var(--blue); }
+
+        .menu-btn { display: none; }
+
+        .sun { display: none; }
+        :root[data-theme="dark"] .sun { display: block; }
+        :root[data-theme="dark"] .moon { display: none; }
+
         /* ---------- Hero ---------- */
-        .hero {
-            padding: 72px 0 88px;
-        }
+        .hero { padding: 64px 0 56px; }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 48px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 56px;
             align-items: center;
         }
 
-        .hero-kicker {
-            display: inline-block;
-            padding: 5px 14px;
-            background: var(--hl);
-            border-radius: 8px;
+        .live-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 16px;
+            border: 1.5px solid var(--ink);
+            border-radius: 999px;
+            background: var(--card);
             font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 18px;
+            font-size: 0.88rem;
+            margin-bottom: 22px;
         }
 
-        h1 {
-            font-size: clamp(2rem, 5.2vw, 3.3rem);
-            font-weight: 700;
-            letter-spacing: -0.01em;
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--teal);
+            box-shadow: 0 0 0 4px color-mix(in srgb, var(--teal) 28%, transparent);
+        }
+
+        h1 { font-weight: 800; letter-spacing: -0.01em; }
+
+        .hi {
+            display: block;
+            font-size: clamp(1.25rem, 3vw, 1.7rem);
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        .name {
+            display: inline;
+            font-size: clamp(2.5rem, 7.4vw, 4.6rem);
+            line-height: 1.35;
+            background: linear-gradient(transparent 62%, var(--hl) 62%, var(--hl) 92%, transparent 92%);
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
         }
 
         .hero-sub {
-            margin-top: 18px;
-            font-size: 1.12rem;
+            margin-top: 22px;
+            font-size: 1.14rem;
             color: var(--muted);
-            max-width: 34em;
+            max-width: 32em;
         }
 
         .btn-row {
@@ -171,43 +249,76 @@
         }
 
         .btn {
-            display: inline-block;
-            padding: 13px 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 30px;
             border-radius: 999px;
             font-weight: 600;
+            font-size: 1rem;
             text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
         }
 
         .btn-primary {
             background: var(--blue);
             color: #fff;
-            box-shadow: 0 8px 22px rgba(37, 99, 235, 0.3);
+            border: 2px solid var(--blue);
+            box-shadow: 0 10px 24px color-mix(in srgb, var(--blue) 40%, transparent);
         }
 
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(37, 99, 235, 0.4); }
+        .btn-primary:hover { transform: translateY(-2px); }
 
         .btn-ghost {
-            background: var(--white);
+            background: transparent;
             color: var(--ink);
-            border: 1.5px solid var(--ink);
+            border: 2px solid var(--ink);
         }
 
-        .btn-ghost:hover { background: var(--ink); color: #fff; }
+        .btn-ghost:hover { background: var(--ink); color: var(--paper); }
 
-        /* Profile photo frame */
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 38px;
+            max-width: 560px;
+        }
+
+        .fact {
+            padding: 14px 16px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+        }
+
+        .fact b {
+            display: block;
+            font-family: 'Prompt', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .fact span { color: var(--muted); font-size: 0.82rem; line-height: 1.4; display: block; margin-top: 2px; }
+
+        /* Photo */
         .photo-wrap {
             position: relative;
-            width: min(340px, 82%);
+            width: min(350px, 84%);
             margin: 0 auto;
         }
 
         .photo {
             position: relative;
             aspect-ratio: 4 / 5;
-            border-radius: 28px;
+            border-radius: 32px;
             border: 3px solid var(--ink);
-            background: var(--blue-soft);
+            background:
+                radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--blue) 30%, transparent), transparent 55%),
+                var(--blue-soft);
             box-shadow: 14px 14px 0 var(--hl);
             overflow: hidden;
             display: grid;
@@ -216,10 +327,10 @@
 
         .photo-fallback {
             font-family: 'Prompt', sans-serif;
-            font-weight: 700;
-            font-size: 7rem;
+            font-weight: 800;
+            font-size: 8rem;
             color: var(--blue);
-            opacity: 0.45;
+            opacity: 0.4;
         }
 
         .photo img {
@@ -231,140 +342,285 @@
             object-position: center top;
         }
 
-        .tag {
+        .chip {
             position: absolute;
-            padding: 7px 14px;
-            background: var(--white);
+            display: grid;
+            place-items: center;
+            min-width: 54px;
+            height: 54px;
+            padding: 0 14px;
+            border-radius: 16px;
+            background: var(--card);
             border: 2px solid var(--ink);
-            border-radius: 12px;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+
+        .chip.c1 { top: 14px; left: -30px; transform: rotate(-6deg); color: var(--blue); }
+        .chip.c2 { top: 46%; right: -34px; transform: rotate(5deg); color: var(--teal); }
+        .chip.c3 { bottom: 36px; left: -26px; transform: rotate(4deg); color: var(--rose); }
+
+        .badge {
+            position: absolute;
+            right: -26px;
+            bottom: -34px;
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            background: var(--deep);
+            display: grid;
+            place-items: center;
+            border: 3px solid var(--card);
+        }
+
+        .badge svg { width: 100%; height: 100%; animation: spin 24s linear infinite; }
+        .badge text { fill: var(--on-deep); font-family: 'Prompt', sans-serif; font-weight: 600; font-size: 10.5px; letter-spacing: 1.6px; }
+
+        .badge-core {
+            position: absolute;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 800;
+            color: var(--hl);
+            font-size: 1.15rem;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .badge-core small { display: block; font-size: 0.62rem; font-weight: 500; color: var(--on-deep); }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Hero entrance (the one page-load moment) */
+        .rise { animation: rise 0.8s cubic-bezier(.2, .8, .2, 1) both; }
+        .d1 { animation-delay: 0.05s; }
+        .d2 { animation-delay: 0.15s; }
+        .d3 { animation-delay: 0.25s; }
+        .d4 { animation-delay: 0.35s; }
+        .d5 { animation-delay: 0.45s; }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        /* ---------- Marquee ---------- */
+        .marquee {
+            background: var(--deep);
+            color: var(--on-deep);
+            border-block: 3px solid var(--ink);
+            overflow: hidden;
+            transform: rotate(-1.2deg);
+            margin: 36px -20px 20px;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: slide 32s linear infinite;
+        }
+
+        .marquee-group { display: flex; align-items: center; gap: 28px; padding: 16px 14px; }
+
+        .marquee-group span {
+            font-family: 'Prompt', sans-serif;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 1.25rem;
             white-space: nowrap;
         }
 
-        .tag.t1 { top: 22px; right: -26px; transform: rotate(4deg); }
-        .tag.t2 { bottom: 34px; left: -26px; transform: rotate(-4deg); background: var(--ink); color: var(--hl); }
+        .marquee-group svg { flex: none; color: var(--hl); }
+
+        @keyframes slide { to { transform: translateX(-50%); } }
 
         /* ---------- Section frame ---------- */
-        .block {
-            padding: 80px 0;
+        .block { padding: 88px 0; }
+
+        .block.alt {
+            background: var(--card);
+            border-block: 1px solid var(--line);
         }
 
-        .block.white {
-            background: var(--white);
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
+        .section-head { max-width: 660px; margin-bottom: 44px; }
 
-        .section-head {
-            max-width: 640px;
-            margin-bottom: 40px;
+        .section-no {
+            display: inline-grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: var(--hl);
+            color: #0B1F3A;
+            border: 2px solid var(--ink);
+            font-family: 'Prompt', sans-serif;
+            font-weight: 700;
+            margin-bottom: 14px;
         }
 
         h2 {
-            font-size: clamp(1.6rem, 3.6vw, 2.2rem);
-            font-weight: 600;
+            font-size: clamp(1.7rem, 3.8vw, 2.4rem);
+            font-weight: 700;
         }
 
-        .section-head p {
-            margin-top: 10px;
-            color: var(--muted);
-        }
+        .section-head p { margin-top: 10px; color: var(--muted); font-size: 1.05rem; }
 
         /* ---------- About ---------- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: start;
+            gap: 40px;
+            align-items: stretch;
         }
 
-        .about-text { font-size: 1.05rem; color: var(--muted); }
+        .about-card {
+            padding: 32px;
+            border-radius: 26px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            font-size: 1.08rem;
+            color: var(--muted);
+        }
+
+        .school {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            color: var(--ink);
+        }
+
+        .school-ico {
+            flex: none;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .school b { font-family: 'Prompt', sans-serif; font-weight: 600; line-height: 1.35; display: block; }
+        .school span { color: var(--muted); font-size: 0.88rem; }
 
         .timeline {
             list-style: none;
             margin: 0;
-            padding: 0 0 0 4px;
+            padding: 0;
             position: relative;
+            display: grid;
+            gap: 14px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 27px;
-            top: 24px;
-            bottom: 24px;
-            width: 2px;
+            left: 31px;
+            top: 30px;
+            bottom: 30px;
+            width: 3px;
             background: var(--line);
+            border-radius: 3px;
         }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            left: 31px;
+            top: 30px;
+            width: 3px;
+            height: 0;
+            max-height: calc(100% - 60px);
+            background: var(--blue);
+            border-radius: 3px;
+            transition: height 1.4s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .timeline.in::after { height: 100%; }
 
         .timeline li {
             position: relative;
+            z-index: 1;
             display: flex;
-            gap: 18px;
             align-items: center;
-            padding: 12px 0;
+            gap: 18px;
+            padding: 14px 18px 14px 14px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 20px;
         }
 
         .tl-badge {
             flex: none;
-            width: 46px;
-            height: 46px;
+            width: 36px;
+            height: 36px;
+            margin-left: 0;
             border-radius: 50%;
             display: grid;
             place-items: center;
-            background: var(--white);
-            border: 2px solid var(--ink);
+            background: var(--card);
+            border: 3px solid var(--blue);
             font-family: 'Prompt', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            position: relative;
-            z-index: 1;
+            font-weight: 700;
+            font-size: 0.72rem;
         }
 
-        .timeline li:last-child .tl-badge { background: var(--hl); }
+        .timeline li:last-child { border-color: var(--ink); background: color-mix(in srgb, var(--hl) 22%, var(--paper)); }
+        .timeline li:last-child .tl-badge { background: var(--hl); border-color: var(--ink); color: #0B1F3A; }
 
-        .tl-text { font-weight: 500; }
+        .tl-text b { font-family: 'Prompt', sans-serif; font-weight: 600; display: block; line-height: 1.3; }
+        .tl-text span { color: var(--muted); font-size: 0.95rem; line-height: 1.5; display: block; }
 
         /* ---------- Skills ---------- */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 22px;
         }
 
         .skill {
+            --c: var(--blue);
             background: var(--paper);
             border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 28px 20px;
+            border-radius: 26px;
+            padding: 32px 22px 26px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        .skill::before {
+            content: '';
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 6px;
+            background: var(--c);
+        }
+
+        .skill.s2 { --c: var(--teal); }
+        .skill.s3 { --c: var(--rose); }
 
         .ring {
             position: relative;
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 16px;
+            width: 156px;
+            height: 156px;
+            margin: 0 auto 18px;
         }
 
         .ring svg { width: 100%; height: 100%; display: block; }
 
-        .ring circle {
-            fill: none;
-            stroke-width: 10;
-            stroke-linecap: round;
-        }
+        .ring circle { fill: none; stroke-width: 10; stroke-linecap: round; }
 
         .ring-track { stroke: var(--line); }
 
         .ring-fill {
-            stroke: var(--c, var(--blue));
+            stroke: var(--c);
             stroke-dasharray: 100;
             stroke-dashoffset: 100;
             transform: rotate(-90deg);
             transform-origin: 60px 60px;
-            transition: stroke-dashoffset 1.3s cubic-bezier(.2, .8, .2, 1);
+            transition: stroke-dashoffset 1.5s cubic-bezier(.2, .8, .2, 1);
         }
 
         .ring.in .ring-fill { stroke-dashoffset: calc(100 - var(--v)); }
@@ -375,174 +631,282 @@
             display: grid;
             place-items: center;
             font-family: 'Prompt', sans-serif;
-            font-weight: 700;
-            font-size: 2rem;
+            font-weight: 800;
+            font-size: 2.3rem;
         }
-
-        .ring-num small { font-size: 0.9rem; font-weight: 500; color: var(--muted); margin-left: 1px; }
 
         .ring-num span { display: flex; align-items: baseline; }
+        .ring-num small { font-size: 0.95rem; font-weight: 500; color: var(--muted); margin-left: 2px; }
 
-        .skill h3 { font-size: 1.05rem; font-weight: 600; }
+        .skill h3 { font-size: 1.1rem; font-weight: 600; }
 
-        .skill-note {
-            margin-top: 28px;
-            padding: 18px 22px;
-            border-radius: 16px;
-            background: var(--blue-soft);
-            color: var(--ink);
-            text-align: center;
+        .skill .sym {
+            position: absolute;
+            right: 16px;
+            top: 22px;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 800;
+            font-size: 2.4rem;
+            color: color-mix(in srgb, var(--c) 22%, transparent);
+            line-height: 1;
         }
 
-        /* ---------- Portfolio cards ---------- */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            --c: var(--blue);
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 26px;
+        .soft {
+            margin-top: 26px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             gap: 14px;
+            flex-wrap: wrap;
+            padding: 20px 24px;
+            border-radius: 20px;
+            background: var(--blue-soft);
+        }
+
+        .soft p { flex: 1 1 280px; }
+
+        .soft-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .soft-tags span {
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: var(--card);
+            border: 2px solid var(--ink);
+            font-weight: 600;
+            font-size: 0.92rem;
+        }
+
+        /* ---------- Portfolio ---------- */
+        .work-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 22px;
+        }
+
+        .work {
+            --c: var(--blue);
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            padding: 30px;
             position: relative;
             overflow: hidden;
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .card::before {
-            content: '';
+        .work:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+        .work.feature { grid-row: 1 / span 2; background: var(--deep); color: var(--on-deep); border-color: var(--ink); }
+        .work.w2 { --c: var(--teal); }
+        .work.w3 { --c: var(--rose); border-style: dashed; }
+
+        .work-ico {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            background: color-mix(in srgb, var(--c) 16%, var(--card));
+            color: var(--c);
+            margin-bottom: 18px;
+        }
+
+        .feature .work-ico { background: var(--hl); color: #0B1F3A; }
+
+        .work-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            background: color-mix(in srgb, var(--c) 16%, var(--card));
+            color: var(--c);
+            font-weight: 600;
+            font-size: 0.82rem;
+            margin-bottom: 12px;
+        }
+
+        .feature .work-tag { background: var(--hl); color: #0B1F3A; }
+
+        .work h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; }
+        .work p { color: var(--muted); }
+        .feature p { color: #BCCBE3; }
+        .work p b { color: var(--ink); font-weight: 600; }
+        .feature p b { color: #fff; }
+
+        /* NPK illustration */
+        .npk {
+            margin-top: 28px;
+            padding: 22px 18px 14px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .tubes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            justify-items: center;
+        }
+
+        .tube { display: grid; justify-items: center; gap: 8px; width: 100%; }
+
+        .tube-glass {
+            width: 54px;
+            height: 150px;
+            border-radius: 16px 16px 27px 27px;
+            border: 3px solid rgba(255, 255, 255, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .liquid {
             position: absolute;
             left: 0;
             right: 0;
-            top: 0;
-            height: 5px;
-            background: var(--c);
+            bottom: 0;
+            height: 0;
+            background: var(--lq);
+            transition: height 1.6s cubic-bezier(.2, .8, .2, 1);
         }
 
-        .card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(15, 42, 74, 0.1); }
+        .tubes.in .liquid { height: var(--h); }
 
-        .card.c2 { --c: var(--teal); }
-        .card.c3 { --c: var(--rose); }
+        .tube b { font-family: 'Prompt', sans-serif; font-size: 1.5rem; line-height: 1; color: var(--lq); }
+        .tube span { font-size: 0.78rem; color: #BCCBE3; text-align: center; line-height: 1.3; }
 
-        .card-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
-            display: grid;
-            place-items: center;
-            background: color-mix(in srgb, var(--c) 14%, #fff);
-            color: var(--c);
-        }
-
-        .card h3 { font-size: 1.12rem; font-weight: 600; }
-
-        .card p { color: var(--muted); font-size: 0.98rem; }
-
-        .card p b { color: var(--ink); font-weight: 600; }
+        .npk-note { margin-top: 12px; font-size: 0.78rem; color: #8FA3C4; text-align: center; }
 
         /* ---------- Motivation ---------- */
         .motivation {
-            background: var(--ink);
-            color: #fff;
-            border-radius: 28px;
-            padding: clamp(28px, 5vw, 56px);
+            background: var(--deep);
+            color: var(--on-deep);
+            border: 3px solid var(--ink);
+            border-radius: 32px;
+            padding: clamp(30px, 6vw, 64px);
             position: relative;
             overflow: hidden;
+            box-shadow: 12px 12px 0 var(--hl);
         }
 
         .motivation::after {
             content: '';
             position: absolute;
-            right: -60px;
-            top: -60px;
-            width: 220px;
-            height: 220px;
+            right: -70px;
+            top: -70px;
+            width: 260px;
+            height: 260px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 224, 102, 0.35);
-            box-shadow: 0 0 0 28px rgba(255, 224, 102, 0.06), 0 0 0 56px rgba(255, 224, 102, 0.04);
+            border: 2px solid rgba(255, 217, 61, 0.4);
+            box-shadow: 0 0 0 30px rgba(255, 217, 61, 0.06), 0 0 0 62px rgba(255, 217, 61, 0.04);
         }
 
-        .motivation h2 { color: #fff; }
+        .motivation .section-no { margin-bottom: 16px; }
+
+        .motivation h2 { color: #fff; position: relative; z-index: 1; }
 
         .motivation h3 {
-            font-size: 1.15rem;
+            font-size: clamp(1.2rem, 2.6vw, 1.6rem);
             font-weight: 500;
             color: var(--hl);
-            margin: 22px 0 10px;
+            margin: 24px 0 14px;
+            max-width: 22em;
+            position: relative;
+            z-index: 1;
         }
 
         .motivation p {
-            max-width: 46em;
-            color: #D4E0F0;
-            font-size: 1.05rem;
+            max-width: 44em;
+            color: #D1DEF1;
+            font-size: 1.1rem;
             position: relative;
             z-index: 1;
         }
 
-        .dream {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 24px;
-            padding: 10px 20px;
-            border-radius: 999px;
-            background: var(--hl);
-            color: var(--ink);
-            font-weight: 600;
+        .goals {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
             position: relative;
             z-index: 1;
         }
+
+        .goal {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 20px;
+            border-radius: 999px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+        }
+
+        .goal.dream { background: var(--hl); color: #0B1F3A; border-color: var(--hl); }
 
         /* ---------- Contact ---------- */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 720px;
+            gap: 22px;
         }
 
         .contact-card {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 22px;
+            gap: 18px;
+            padding: 24px;
             background: var(--paper);
             border: 1px solid var(--line);
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--ink);
-            transition: border-color 0.2s, transform 0.2s;
+            border-radius: 24px;
             min-width: 0;
+            transition: border-color 0.2s, transform 0.2s;
         }
 
-        .contact-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+        .contact-card:hover { border-color: var(--blue); transform: translateY(-3px); }
 
         .contact-icon {
             flex: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
             display: grid;
             place-items: center;
             background: var(--blue);
             color: #fff;
         }
 
-        .contact-label { color: var(--muted); font-size: 0.85rem; }
-        .contact-value { font-weight: 600; overflow-wrap: anywhere; }
+        .contact-main { flex: 1; min-width: 0; text-decoration: none; color: var(--ink); }
+        .contact-label { color: var(--muted); font-size: 0.85rem; display: block; }
+        .contact-value { font-family: 'Prompt', sans-serif; font-weight: 600; font-size: 1.05rem; overflow-wrap: anywhere; }
+
+        .copy-btn { flex: none; }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 28px;
+            transform: translate(-50%, 24px);
+            opacity: 0;
+            pointer-events: none;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: var(--ink);
+            color: var(--paper);
+            font-weight: 600;
+            z-index: 120;
+            transition: opacity 0.25s, transform 0.25s;
+        }
+
+        .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
         /* ---------- Footer ---------- */
         footer {
-            padding: 28px 0 36px;
+            padding: 30px 0 40px;
             text-align: center;
             color: var(--muted);
-            font-size: 0.9rem;
+            font-size: 0.92rem;
         }
 
         /* ---------- Focus ---------- */
@@ -553,18 +917,19 @@
         }
 
         /* ---------- Responsive ---------- */
-        @media (max-width: 860px) {
+        @media (max-width: 900px) {
             .hero-grid,
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .hero { padding: 48px 0 64px; }
-            .photo-wrap { order: -1; width: min(280px, 72%); }
-            .skills-grid,
-            .cards { grid-template-columns: 1fr; }
-            .block { padding: 60px 0; }
+            .about-grid,
+            .work-grid { grid-template-columns: 1fr; gap: 36px; }
+            .work.feature { grid-row: auto; }
+            .photo-wrap { order: -1; width: min(290px, 74%); }
+            .skills-grid { grid-template-columns: 1fr; }
+            .block { padding: 64px 0; }
+            .hero { padding: 40px 0 36px; }
         }
 
         @media (max-width: 760px) {
-            .menu-btn { display: grid; place-items: center; }
+            .menu-btn { display: grid; }
             .nav-links {
                 display: none;
                 position: absolute;
@@ -572,26 +937,34 @@
                 left: 0;
                 right: 0;
                 flex-direction: column;
-                background: var(--white);
+                background: var(--card);
                 border-bottom: 1px solid var(--line);
                 padding: 10px 20px 16px;
             }
             .nav-links.open { display: flex; }
             .nav-links a { padding: 12px 14px; }
             .contact-grid { grid-template-columns: 1fr; }
-            .tag.t1 { right: -10px; }
-            .tag.t2 { left: -10px; }
+            .facts { grid-template-columns: 1fr; }
+            .chip.c1 { left: -12px; }
+            .chip.c2 { right: -14px; }
+            .chip.c3 { left: -10px; }
+            .badge { right: -12px; width: 108px; height: 108px; }
+            .marquee { margin-inline: -30px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            * { transition: none !important; }
+            *, *::before, *::after { animation: none !important; transition: none !important; }
             .ring-fill { stroke-dashoffset: calc(100 - var(--v)) !important; }
+            .tubes .liquid { height: var(--h) !important; }
+            .timeline::after { height: 100% !important; }
         }
     </style>
 </head>
 
 <body>
+    <div id="progress"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <!-- ===== Navigation ===== -->
     <nav class="nav">
@@ -600,18 +973,25 @@
                 <span class="brand-mark">ก</span>
                 Kitchaphat Portfolio
             </a>
-            <button class="menu-btn" id="menuBtn" aria-label="เปิดเมนู" aria-expanded="false">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-                    <path d="M4 7h16M4 12h16M4 17h16" />
-                </svg>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#motivation">Motivation</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+
+            <div class="nav-right">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#motivation">Motivation</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <button class="icon-btn" id="themeBtn" aria-label="สลับโหมดมืด/สว่าง">
+                    <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>
+                    <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
+                </button>
+
+                <button class="icon-btn menu-btn" id="menuBtn" aria-label="เปิดเมนู" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -621,48 +1001,106 @@
         <section id="home" class="hero">
             <div class="wrap hero-grid">
                 <div>
-                    <span class="hero-kicker">Student portfolio</span>
-                    <h1>สวัสดีครับ ผมชื่อ ด.ช. กิจพัฒน์ บัวแย้ม</h1>
-                    <p class="hero-sub">นักเรียนชั้น ม.3 ผู้หลงใหลในตัวเลข วิทยาศาสตร์ และภาษาอังกฤษ</p>
-                    <div class="btn-row">
-                        <a href="#portfolio" class="btn btn-primary">ดูผลงานของฉัน</a>
+                    <span class="live-pill rise d1"><span class="live-dot"></span>Student portfolio · M.4 Admission 2026</span>
+
+                    <h1 class="rise d2">
+                        <span class="hi">สวัสดีครับ ผมชื่อ</span>
+                        <span class="name">ด.ช. กิจพัฒน์ บัวแย้ม</span>
+                    </h1>
+
+                    <p class="hero-sub rise d3">นักเรียนชั้น ม.3 ผู้หลงใหลในตัวเลข วิทยาศาสตร์ และภาษาอังกฤษ</p>
+
+                    <div class="btn-row rise d4">
+                        <a href="#portfolio" class="btn btn-primary">
+                            ดูผลงานของฉัน
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                        </a>
                         <a href="#contact" class="btn btn-ghost">ติดต่อผม</a>
+                    </div>
+
+                    <div class="facts rise d5">
+                        <div class="fact"><b>ม.3</b><span>ระดับชั้นปัจจุบัน</span></div>
+                        <div class="fact"><b>จุฬาภรณราชวิทยาลัย</b><span>โรงเรียนวิทยาศาสตร์</span></div>
+                        <div class="fact"><b>วิทย์ · คณิต · อังกฤษ</b><span>สิ่งที่ถนัด</span></div>
                     </div>
                 </div>
 
-                <div class="photo-wrap">
+                <div class="photo-wrap rise d3">
                     <div class="photo">
                         <span class="photo-fallback">ก</span>
                         <!-- ใส่รูปโปรไฟล์: อัปโหลดไฟล์ชื่อ profile.jpg ไว้โฟลเดอร์เดียวกับ index.html -->
                         <img src="profile.jpg" alt="รูปของ กิจพัฒน์ บัวแย้ม" onerror="this.style.display='none'">
                     </div>
-                    <span class="tag t1">Student portfolio</span>
-                    <span class="tag t2">M.4 Admission 2026</span>
+
+                    <span class="chip c1" aria-hidden="true">π</span>
+                    <span class="chip c2" aria-hidden="true">H₂O</span>
+                    <span class="chip c3" aria-hidden="true">NPK</span>
+
+                    <div class="badge" aria-hidden="true">
+                        <svg viewBox="0 0 120 120">
+                            <defs><path id="circ" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0" /></defs>
+                            <text><textPath href="#circ">M.4 ADMISSION 2026 • STUDENT PORTFOLIO •</textPath></text>
+                        </svg>
+                        <div class="badge-core">ม.4<small>2026</small></div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- ===== Marquee ===== -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <div class="marquee-group">
+                    <span>Mathematics</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+                    <span>Science</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+                    <span>English</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+                    <span>Problem Solving</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+                    <span>Teamwork</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+                </div>
+                <div class="marquee-group">
+                    <span>Mathematics</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+                    <span>Science</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+                    <span>English</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+                    <span>Problem Solving</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+                    <span>Teamwork</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+                </div>
+            </div>
+        </div>
+
         <!-- ===== About ===== -->
-        <section id="about" class="block white">
+        <section id="about" class="block alt">
             <div class="wrap">
                 <div class="section-head">
+                    <span class="section-no">1</span>
                     <h2>ประวัติส่วนตัวและการศึกษา</h2>
                 </div>
-                <div class="about-grid">
-                    <p class="about-text">ผมเป็นนักเรียนจากโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย ที่มีความมุ่งมั่นในการพัฒนาตนเองอย่างต่อเนื่อง โดยเฉพาะในสายวิชาคณิตศาสตร์และวิทยาศาสตร์ รวมถึงการใช้ภาษาอังกฤษในการค้นคว้าข้อมูลและสื่อสาร</p>
 
-                    <ol class="timeline">
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="school">
+                            <span class="school-ico">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z" /><path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5" /></svg>
+                            </span>
+                            <div>
+                                <b>โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย</b>
+                                <span>นักเรียนชั้น ม.3</span>
+                            </div>
+                        </div>
+                        ผมเป็นนักเรียนจากโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย ที่มีความมุ่งมั่นในการพัฒนาตนเองอย่างต่อเนื่อง โดยเฉพาะในสายวิชาคณิตศาสตร์และวิทยาศาสตร์ รวมถึงการใช้ภาษาอังกฤษในการค้นคว้าข้อมูลและสื่อสาร
+                    </div>
+
+                    <ol class="timeline" id="timeline">
                         <li>
                             <span class="tl-badge">ม.1</span>
-                            <span class="tl-text">เริ่มต้นค้นคว้าในวิชาคณิตศาสตร์และวิทยาศาสตร์</span>
+                            <div class="tl-text"><b>ม.1</b><span>เริ่มต้นค้นคว้าในวิชาคณิตศาสตร์และวิทยาศาสตร์</span></div>
                         </li>
                         <li>
                             <span class="tl-badge">ม.2</span>
-                            <span class="tl-text">พัฒนาโครงงานวิชาการระดับโรงเรียน</span>
+                            <div class="tl-text"><b>ม.2</b><span>พัฒนาโครงงานวิชาการระดับโรงเรียน</span></div>
                         </li>
                         <li>
                             <span class="tl-badge">ม.3</span>
-                            <span class="tl-text">แข่งขันและทำโครงงานวิทยาศาสตร์</span>
+                            <div class="tl-text"><b>ม.3</b><span>แข่งขันและทำโครงงานวิทยาศาสตร์</span></div>
                         </li>
                     </ol>
                 </div>
@@ -673,88 +1111,114 @@
         <section id="skills" class="block">
             <div class="wrap">
                 <div class="section-head">
+                    <span class="section-no">2</span>
                     <h2>ทักษะและความถนัด</h2>
                 </div>
 
                 <div class="skills-grid">
                     <div class="skill">
-                        <div class="ring" style="--v: 90; --c: var(--blue);">
+                        <span class="sym" aria-hidden="true">∑</span>
+                        <div class="ring" style="--v: 90;">
                             <svg viewBox="0 0 120 120" aria-hidden="true">
                                 <circle class="ring-track" cx="60" cy="60" r="52" pathLength="100" />
                                 <circle class="ring-fill" cx="60" cy="60" r="52" pathLength="100" />
                             </svg>
-                            <div class="ring-num"><span>90<small>%</small></span></div>
+                            <div class="ring-num"><span><b class="count" data-to="90">90</b><small>%</small></span></div>
                         </div>
                         <h3>Mathematics (คณิตศาสตร์)</h3>
                     </div>
 
-                    <div class="skill">
-                        <div class="ring" style="--v: 85; --c: var(--teal);">
+                    <div class="skill s2">
+                        <span class="sym" aria-hidden="true">⚗</span>
+                        <div class="ring" style="--v: 85;">
                             <svg viewBox="0 0 120 120" aria-hidden="true">
                                 <circle class="ring-track" cx="60" cy="60" r="52" pathLength="100" />
                                 <circle class="ring-fill" cx="60" cy="60" r="52" pathLength="100" />
                             </svg>
-                            <div class="ring-num"><span>85<small>%</small></span></div>
+                            <div class="ring-num"><span><b class="count" data-to="85">85</b><small>%</small></span></div>
                         </div>
                         <h3>Science (วิทยาศาสตร์)</h3>
                     </div>
 
-                    <div class="skill">
-                        <div class="ring" style="--v: 95; --c: var(--rose);">
+                    <div class="skill s3">
+                        <span class="sym" aria-hidden="true">Aa</span>
+                        <div class="ring" style="--v: 95;">
                             <svg viewBox="0 0 120 120" aria-hidden="true">
                                 <circle class="ring-track" cx="60" cy="60" r="52" pathLength="100" />
                                 <circle class="ring-fill" cx="60" cy="60" r="52" pathLength="100" />
                             </svg>
-                            <div class="ring-num"><span>95<small>%</small></span></div>
+                            <div class="ring-num"><span><b class="count" data-to="95">95</b><small>%</small></span></div>
                         </div>
                         <h3>English (ภาษาอังกฤษ)</h3>
                     </div>
                 </div>
 
-                <p class="skill-note">นอกจากทักษะด้านวิชาการแล้ว ยังมีทักษะด้านการแก้ปัญหา (Problem Solving) และการทำงานเป็นทีม (Teamwork)</p>
+                <div class="soft">
+                    <p>นอกจากทักษะด้านวิชาการแล้ว ยังมีทักษะด้านการแก้ปัญหา (Problem Solving) และการทำงานเป็นทีม (Teamwork)</p>
+                    <div class="soft-tags">
+                        <span>Problem Solving</span>
+                        <span>Teamwork</span>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- ===== Portfolio ===== -->
-        <section id="portfolio" class="block white">
+        <section id="portfolio" class="block alt">
             <div class="wrap">
                 <div class="section-head">
+                    <span class="section-no">3</span>
                     <h2>ผลงานเด่นที่ภาคภูมิใจ</h2>
                     <p>เรียนรู้จากสิ่งที่ลงมือทำ และเติบโตขึ้นในทุกโครงงาน</p>
                 </div>
 
-                <div class="cards">
-                    <article class="card">
-                        <div class="card-icon">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M9 3h6M10 3v6.2L4.6 18.1A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.7-2.9L14 9.2V3" />
-                                <path d="M7.5 15h9" />
-                            </svg>
+                <div class="work-grid">
+
+                    <article class="work feature">
+                        <div class="work-ico">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6.2L4.6 18.1A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.7-2.9L14 9.2V3" /><path d="M7.5 15h9" /></svg>
                         </div>
-                        <h3>รางวัล/โครงงานวิทยาศาสตร์</h3>
+                        <span class="work-tag">รางวัล/โครงงานวิทยาศาสตร์</span>
+                        <h3>เครื่องมือติดตามค่าธาตุอาหารหลักในแปลงเพาะปลูก</h3>
                         <p><b>คำอธิบาย:</b> การทำโครงงานเกี่ยวกับ การพัฒนาเครื่องมือสำหรับติดตามค่าธาตุอาหารหลักที่พืชต้องการในแปลงเพาะปลูกพืช</p>
+
+                        <div class="npk">
+                            <div class="tubes" id="tubes">
+                                <div class="tube" style="--lq: #4C9AFF; --h: 78%;">
+                                    <div class="tube-glass"><div class="liquid"></div></div>
+                                    <b>N</b><span>ไนโตรเจน</span>
+                                </div>
+                                <div class="tube" style="--lq: #FF7AA2; --h: 52%;">
+                                    <div class="tube-glass"><div class="liquid"></div></div>
+                                    <b>P</b><span>ฟอสฟอรัส</span>
+                                </div>
+                                <div class="tube" style="--lq: #FFD93D; --h: 66%;">
+                                    <div class="tube-glass"><div class="liquid"></div></div>
+                                    <b>K</b><span>โพแทสเซียม</span>
+                                </div>
+                            </div>
+                            <p class="npk-note">ภาพประกอบแนวคิดธาตุอาหารหลัก N · P · K (ไม่ใช่ข้อมูลจริง)</p>
+                        </div>
                     </article>
 
-                    <article class="card c2">
-                        <div class="card-icon">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <circle cx="12" cy="12" r="9" />
-                                <path d="M3 12h18M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z" />
-                            </svg>
+                    <article class="work w2">
+                        <div class="work-ico">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z" /></svg>
                         </div>
-                        <h3>กิจกรรมค่าย/ภาษาอังกฤษ</h3>
+                        <span class="work-tag">กิจกรรมค่าย/ภาษาอังกฤษ</span>
+                        <h3>ASMO 2567</h3>
                         <p><b>คำอธิบาย:</b> เข้าร่วมกิจกรรมทดสอบทักษะภาษาอังกฤษ ASMO2567</p>
                     </article>
 
-                    <article class="card c3">
-                        <div class="card-icon">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z" />
-                            </svg>
+                    <article class="work w3">
+                        <div class="work-ico">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z" /></svg>
                         </div>
+                        <span class="work-tag">เพิ่มเติม</span>
                         <h3>ผลงานและกิจกรรมอื่น ๆ</h3>
                         <p>พื้นที่สำหรับรวบรวมผลงาน กิจกรรม และประสบการณ์ที่ได้เรียนรู้เพิ่มเติม</p>
                     </article>
+
                 </div>
             </div>
         </section>
@@ -763,51 +1227,59 @@
         <section id="motivation" class="block">
             <div class="wrap">
                 <div class="motivation">
+                    <span class="section-no">4</span>
                     <h2>เป้าหมายและแรงบันดาลใจ</h2>
                     <h3>ทำไมผมถึงอยากเข้าศึกษาต่อในระดับชั้น ม.4 ที่นี่?</h3>
                     <p>เพราะผมเชื่อว่าศักยภาพด้านวิทย์-คณิต-อังกฤษ ของผม จะสามารถต่อยอดและพัฒนาได้อย่างก้าวกระโดดภายใต้สภาพแวดล้อมและหลักสูตรของโรงเรียนแห่งนี้ ผมมีความฝันที่จะนำความรู้ไปประยุกต์ใช้ในสายอาชีพ จิตแพทย์ ในอนาคต</p>
-                    <span class="dream">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6c-2.3 4.6-9.3 9-9.3 9z" />
-                        </svg>
-                        ความฝัน: จิตแพทย์
-                    </span>
+
+                    <div class="goals">
+                        <span class="goal">วิทย์</span>
+                        <span class="goal">คณิต</span>
+                        <span class="goal">อังกฤษ</span>
+                        <span class="goal dream">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6c-2.3 4.6-9.3 9-9.3 9z" /></svg>
+                            ความฝัน: จิตแพทย์
+                        </span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ===== Contact ===== -->
-        <section id="contact" class="block white">
+        <section id="contact" class="block alt">
             <div class="wrap">
                 <div class="section-head">
+                    <span class="section-no">5</span>
                     <h2>ช่องทางการติดต่อ</h2>
+                    <p>กดที่ข้อมูลเพื่อติดต่อ หรือกดปุ่มคัดลอกได้เลย</p>
                 </div>
 
                 <div class="contact-grid">
-                    <a class="contact-card" href="mailto:kitchaphat.bua@pccpl.ac.th">
+                    <div class="contact-card">
                         <span class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <rect x="3" y="5" width="18" height="14" rx="2" />
-                                <path d="M3 7l9 6 9-6" />
-                            </svg>
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
                         </span>
-                        <span>
-                            <div class="contact-label">Email</div>
-                            <div class="contact-value">kitchaphat.bua@pccpl.ac.th</div>
-                        </span>
-                    </a>
+                        <a class="contact-main" href="mailto:kitchaphat.bua@pccpl.ac.th">
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">kitchaphat.bua@pccpl.ac.th</span>
+                        </a>
+                        <button class="icon-btn copy-btn" data-copy="kitchaphat.bua@pccpl.ac.th" aria-label="คัดลอกอีเมล">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h8" /></svg>
+                        </button>
+                    </div>
 
-                    <a class="contact-card" href="tel:0855265354">
+                    <div class="contact-card">
                         <span class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
-                            </svg>
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" /></svg>
                         </span>
-                        <span>
-                            <div class="contact-label">Phone</div>
-                            <div class="contact-value">0855265354</div>
-                        </span>
-                    </a>
+                        <a class="contact-main" href="tel:0855265354">
+                            <span class="contact-label">Phone</span>
+                            <span class="contact-value">0855265354</span>
+                        </a>
+                        <button class="icon-btn copy-btn" data-copy="0855265354" aria-label="คัดลอกเบอร์โทร">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h8" /></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -819,36 +1291,100 @@
     </footer>
 
     <script>
-        // Mobile menu
-        const menuBtn = document.getElementById('menuBtn');
-        const navLinks = document.getElementById('navLinks');
+        var root = document.documentElement;
 
-        menuBtn.addEventListener('click', () => {
-            const open = navLinks.classList.toggle('open');
+        // ---------- Theme toggle ----------
+        document.getElementById('themeBtn').addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) { }
+        });
+
+        // ---------- Mobile menu ----------
+        var menuBtn = document.getElementById('menuBtn');
+        var navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', function () {
+            var open = navLinks.classList.toggle('open');
             menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
 
-        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-            navLinks.classList.remove('open');
-            menuBtn.setAttribute('aria-expanded', 'false');
-        }));
+        navLinks.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                navLinks.classList.remove('open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
 
-        // Fill the skill rings when they scroll into view
-        const rings = document.querySelectorAll('.ring');
+        // ---------- Scroll progress ----------
+        var bar = document.getElementById('progress');
+
+        function onScroll() {
+            var h = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // ---------- Reveal: rings, tubes, timeline ----------
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function countUp(el) {
+            var to = parseInt(el.getAttribute('data-to'), 10);
+            if (reduce) { el.textContent = to; return; }
+            var start = null, dur = 1300;
+            function step(ts) {
+                if (!start) start = ts;
+                var p = Math.min((ts - start) / dur, 1);
+                var eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(to * eased);
+                if (p < 1) requestAnimationFrame(step);
+            }
+            el.textContent = '0';
+            requestAnimationFrame(step);
+        }
+
+        var targets = document.querySelectorAll('.ring, #tubes, #timeline');
 
         if ('IntersectionObserver' in window) {
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in');
-                        io.unobserve(entry.target);
-                    }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var el = entry.target;
+                    el.classList.add('in');
+                    el.querySelectorAll('.count').forEach(countUp);
+                    io.unobserve(el);
                 });
-            }, { threshold: 0.4 });
-            rings.forEach(r => io.observe(r));
+            }, { threshold: 0.35 });
+            targets.forEach(function (t) { io.observe(t); });
         } else {
-            rings.forEach(r => r.classList.add('in'));
+            targets.forEach(function (t) { t.classList.add('in'); });
         }
+
+        // ---------- Copy to clipboard ----------
+        var toast = document.getElementById('toast');
+        var toastTimer;
+
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+        }
+
+        document.querySelectorAll('.copy-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var text = btn.getAttribute('data-copy');
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(
+                        function () { showToast('คัดลอกแล้ว: ' + text); },
+                        function () { showToast('คัดลอกไม่สำเร็จ'); }
+                    );
+                } else {
+                    showToast('เบราว์เซอร์นี้ไม่รองรับการคัดลอก');
+                }
+            });
+        });
     </script>
 </body>
 
