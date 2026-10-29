@@ -1,141 +1,855 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="แฟ้มสะสมผลงานของ ด.ช. กิจพัฒน์ บัวแย้ม สำหรับการสมัครเข้าศึกษาต่อระดับชั้น ม.4">
-  <title>กิจพัฒน์ บัวแย้ม | Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { prompt: ['Prompt', 'sans-serif'] },
-          colors: {
-            ink: '#10233f',
-            navy: '#183b66',
-            sky: '#4bb9e8',
-            mist: '#eef7fb',
-            amber: '#f4b942'
-          },
-          boxShadow: { soft: '0 18px 50px rgba(16, 35, 63, 0.10)' }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="แฟ้มสะสมผลงานของ ด.ช. กิจพัฒน์ บัวแย้ม สำหรับการสมัครเข้าศึกษาต่อระดับชั้น ม.4">
+    <title>กิจพัฒน์ บัวแย้ม | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #F4F8FD;
+            --white: #FFFFFF;
+            --ink: #0F2A4A;
+            --muted: #4F6480;
+            --line: #D3DEEB;
+            --grid: rgba(37, 99, 235, 0.07);
+            --blue: #2563EB;
+            --blue-soft: #E3ECFD;
+            --hl: #FFE066;
+            --teal: #0E9F8E;
+            --rose: #E0507A;
         }
-      }
-    };
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    body { background: #f8fafc; }
-    .hero-grid { background-image: linear-gradient(rgba(75, 185, 232, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(75, 185, 232, .08) 1px, transparent 1px); background-size: 36px 36px; }
-    .section-kicker::before { content: ''; display: inline-block; width: 2.75rem; height: 2px; margin-right: .75rem; vertical-align: middle; background: #f4b942; }
-    .timeline-line { position: absolute; left: 9px; top: 1rem; bottom: 1rem; width: 2px; background: #c8eaf7; }
-    .timeline-dot { position: relative; z-index: 1; flex: 0 0 auto; width: 20px; height: 20px; border: 4px solid #fff; border-radius: 9999px; background: #4bb9e8; box-shadow: 0 0 0 2px #4bb9e8; }
-    .progress-fill { width: 0; animation: grow 1.2s ease-out forwards; }
-    @keyframes grow { to { width: var(--progress); } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; } }
-  </style>
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'Noto Sans Thai', system-ui, sans-serif;
+            color: var(--ink);
+            line-height: 1.75;
+            background-color: var(--paper);
+            /* graph-paper background */
+            background-image:
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Prompt', 'Noto Sans Thai', sans-serif;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        p { margin: 0; }
+
+        .wrap {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section { scroll-margin-top: 84px; }
+
+        /* ---------- Nav ---------- */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(244, 248, 253, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--ink);
+            text-decoration: none;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 600;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--ink);
+            color: var(--hl);
+            font-size: 1.15rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover { background: var(--blue-soft); color: var(--blue); }
+
+        .menu-btn {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            background: var(--white);
+            cursor: pointer;
+            color: var(--ink);
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            padding: 72px 0 88px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            padding: 5px 14px;
+            background: var(--hl);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5.2vw, 3.3rem);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-sub {
+            margin-top: 18px;
+            font-size: 1.12rem;
+            color: var(--muted);
+            max-width: 34em;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: #fff;
+            box-shadow: 0 8px 22px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(37, 99, 235, 0.4); }
+
+        .btn-ghost {
+            background: var(--white);
+            color: var(--ink);
+            border: 1.5px solid var(--ink);
+        }
+
+        .btn-ghost:hover { background: var(--ink); color: #fff; }
+
+        /* Profile photo frame */
+        .photo-wrap {
+            position: relative;
+            width: min(340px, 82%);
+            margin: 0 auto;
+        }
+
+        .photo {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            border-radius: 28px;
+            border: 3px solid var(--ink);
+            background: var(--blue-soft);
+            box-shadow: 14px 14px 0 var(--hl);
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+        }
+
+        .photo-fallback {
+            font-family: 'Prompt', sans-serif;
+            font-weight: 700;
+            font-size: 7rem;
+            color: var(--blue);
+            opacity: 0.45;
+        }
+
+        .photo img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .tag {
+            position: absolute;
+            padding: 7px 14px;
+            background: var(--white);
+            border: 2px solid var(--ink);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .tag.t1 { top: 22px; right: -26px; transform: rotate(4deg); }
+        .tag.t2 { bottom: 34px; left: -26px; transform: rotate(-4deg); background: var(--ink); color: var(--hl); }
+
+        /* ---------- Section frame ---------- */
+        .block {
+            padding: 80px 0;
+        }
+
+        .block.white {
+            background: var(--white);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-head {
+            max-width: 640px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+            font-weight: 600;
+        }
+
+        .section-head p {
+            margin-top: 10px;
+            color: var(--muted);
+        }
+
+        /* ---------- About ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .about-text { font-size: 1.05rem; color: var(--muted); }
+
+        .timeline {
+            list-style: none;
+            margin: 0;
+            padding: 0 0 0 4px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 27px;
+            top: 24px;
+            bottom: 24px;
+            width: 2px;
+            background: var(--line);
+        }
+
+        .timeline li {
+            position: relative;
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .tl-badge {
+            flex: none;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--white);
+            border: 2px solid var(--ink);
+            font-family: 'Prompt', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline li:last-child .tl-badge { background: var(--hl); }
+
+        .tl-text { font-weight: 500; }
+
+        /* ---------- Skills ---------- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        .ring {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 16px;
+        }
+
+        .ring svg { width: 100%; height: 100%; display: block; }
+
+        .ring circle {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+        }
+
+        .ring-track { stroke: var(--line); }
+
+        .ring-fill {
+            stroke: var(--c, var(--blue));
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            transform: rotate(-90deg);
+            transform-origin: 60px 60px;
+            transition: stroke-dashoffset 1.3s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .ring.in .ring-fill { stroke-dashoffset: calc(100 - var(--v)); }
+
+        .ring-num {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+        }
+
+        .ring-num small { font-size: 0.9rem; font-weight: 500; color: var(--muted); margin-left: 1px; }
+
+        .ring-num span { display: flex; align-items: baseline; }
+
+        .skill h3 { font-size: 1.05rem; font-weight: 600; }
+
+        .skill-note {
+            margin-top: 28px;
+            padding: 18px 22px;
+            border-radius: 16px;
+            background: var(--blue-soft);
+            color: var(--ink);
+            text-align: center;
+        }
+
+        /* ---------- Portfolio cards ---------- */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            --c: var(--blue);
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 5px;
+            background: var(--c);
+        }
+
+        .card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(15, 42, 74, 0.1); }
+
+        .card.c2 { --c: var(--teal); }
+        .card.c3 { --c: var(--rose); }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: color-mix(in srgb, var(--c) 14%, #fff);
+            color: var(--c);
+        }
+
+        .card h3 { font-size: 1.12rem; font-weight: 600; }
+
+        .card p { color: var(--muted); font-size: 0.98rem; }
+
+        .card p b { color: var(--ink); font-weight: 600; }
+
+        /* ---------- Motivation ---------- */
+        .motivation {
+            background: var(--ink);
+            color: #fff;
+            border-radius: 28px;
+            padding: clamp(28px, 5vw, 56px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .motivation::after {
+            content: '';
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 224, 102, 0.35);
+            box-shadow: 0 0 0 28px rgba(255, 224, 102, 0.06), 0 0 0 56px rgba(255, 224, 102, 0.04);
+        }
+
+        .motivation h2 { color: #fff; }
+
+        .motivation h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--hl);
+            margin: 22px 0 10px;
+        }
+
+        .motivation p {
+            max-width: 46em;
+            color: #D4E0F0;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dream {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 24px;
+            padding: 10px 20px;
+            border-radius: 999px;
+            background: var(--hl);
+            color: var(--ink);
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---------- Contact ---------- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 720px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 22px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color 0.2s, transform 0.2s;
+            min-width: 0;
+        }
+
+        .contact-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+
+        .contact-icon {
+            flex: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .contact-label { color: var(--muted); font-size: 0.85rem; }
+        .contact-value { font-weight: 600; overflow-wrap: anywhere; }
+
+        /* ---------- Footer ---------- */
+        footer {
+            padding: 28px 0 36px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- Focus ---------- */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--blue);
+            outline-offset: 3px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 860px) {
+            .hero-grid,
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero { padding: 48px 0 64px; }
+            .photo-wrap { order: -1; width: min(280px, 72%); }
+            .skills-grid,
+            .cards { grid-template-columns: 1fr; }
+            .block { padding: 60px 0; }
+        }
+
+        @media (max-width: 760px) {
+            .menu-btn { display: grid; place-items: center; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--white);
+                border-bottom: 1px solid var(--line);
+                padding: 10px 20px 16px;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 12px 14px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .tag.t1 { right: -10px; }
+            .tag.t2 { left: -10px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { transition: none !important; }
+            .ring-fill { stroke-dashoffset: calc(100 - var(--v)) !important; }
+        }
+    </style>
 </head>
-<body class="font-prompt text-ink antialiased">
-  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
-    <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 lg:px-8" aria-label="เมนูหลัก">
-      <a href="#home" class="flex items-center gap-3 font-semibold text-navy" aria-label="กลับไปหน้าแรก">
-        <span class="grid h-10 w-10 place-items-center rounded-xl bg-navy text-lg text-white">ก</span>
-        <span class="hidden sm:block">Kitchaphat <span class="font-light text-sky">Portfolio</span></span>
-      </a>
-      <button id="menu-toggle" class="grid h-10 w-10 place-items-center rounded-lg text-navy md:hidden" aria-controls="site-menu" aria-expanded="false" aria-label="เปิดเมนู">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-      <div id="site-menu" class="absolute left-0 right-0 top-full hidden border-b border-slate-200 bg-white px-5 py-4 md:static md:flex md:items-center md:gap-8 md:border-0 md:p-0">
-        <a class="nav-link py-2 text-sm font-medium text-slate-600 transition hover:text-navy" href="#about">About</a>
-        <a class="nav-link py-2 text-sm font-medium text-slate-600 transition hover:text-navy" href="#skills">Skills</a>
-        <a class="nav-link py-2 text-sm font-medium text-slate-600 transition hover:text-navy" href="#portfolio">Portfolio</a>
-        <a class="nav-link py-2 text-sm font-medium text-slate-600 transition hover:text-navy" href="#motivation">Motivation</a>
-        <a class="nav-link py-2 text-sm font-medium text-slate-600 transition hover:text-navy" href="#contact">Contact</a>
-      </div>
+
+<body>
+
+    <!-- ===== Navigation ===== -->
+    <nav class="nav">
+        <div class="wrap nav-inner">
+            <a href="#home" class="brand">
+                <span class="brand-mark">ก</span>
+                Kitchaphat Portfolio
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="เปิดเมนู" aria-expanded="false">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                    <path d="M4 7h16M4 12h16M4 17h16" />
+                </svg>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#motivation">Motivation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section id="home" class="hero-grid overflow-hidden border-b border-sky/20 bg-mist">
-      <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 md:grid-cols-[1.15fr_.85fr] md:py-28 lg:px-8">
-        <div>
-          <p class="section-kicker mb-5 text-sm font-semibold uppercase tracking-[.16em] text-navy">Who I am</p>
-          <h1 class="max-w-3xl text-4xl font-semibold leading-tight text-navy sm:text-5xl lg:text-6xl">สวัสดีครับ ผมชื่อ ด.ช. กิจพัฒน์ บัวแย้ม</h1>
-          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">นักเรียนชั้น ม.3 ผู้หลงใหลในตัวเลข วิทยาศาสตร์ และภาษาอังกฤษ</p>
-          <a href="#portfolio" class="mt-9 inline-flex items-center gap-3 rounded-lg bg-navy px-6 py-3.5 font-medium text-white shadow-lg shadow-navy/20 transition hover:-translate-y-0.5 hover:bg-ink">ดูผลงานของฉัน <i class="fa-solid fa-arrow-down text-sm text-sky"></i></a>
-        </div>
-        <div class="mx-auto w-full max-w-sm md:ml-auto">
-          <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] border-8 border-white bg-white shadow-soft">
-            <div class="absolute inset-0 grid place-items-center bg-gradient-to-br from-sky/20 via-white to-amber/20">
-              <div class="text-center text-sky/70"><i class="fa-solid fa-user text-7xl"></i><p class="mt-4 text-sm font-medium">Profile Image</p></div>
+    <main>
+
+        <!-- ===== Hero ===== -->
+        <section id="home" class="hero">
+            <div class="wrap hero-grid">
+                <div>
+                    <span class="hero-kicker">Student portfolio</span>
+                    <h1>สวัสดีครับ ผมชื่อ ด.ช. กิจพัฒน์ บัวแย้ม</h1>
+                    <p class="hero-sub">นักเรียนชั้น ม.3 ผู้หลงใหลในตัวเลข วิทยาศาสตร์ และภาษาอังกฤษ</p>
+                    <div class="btn-row">
+                        <a href="#portfolio" class="btn btn-primary">ดูผลงานของฉัน</a>
+                        <a href="#contact" class="btn btn-ghost">ติดต่อผม</a>
+                    </div>
+                </div>
+
+                <div class="photo-wrap">
+                    <div class="photo">
+                        <span class="photo-fallback">ก</span>
+                        <!-- ใส่รูปโปรไฟล์: อัปโหลดไฟล์ชื่อ profile.jpg ไว้โฟลเดอร์เดียวกับ index.html -->
+                        <img src="profile.jpg" alt="รูปของ กิจพัฒน์ บัวแย้ม" onerror="this.style.display='none'">
+                    </div>
+                    <span class="tag t1">Student portfolio</span>
+                    <span class="tag t2">M.4 Admission 2026</span>
+                </div>
             </div>
-            <div class="absolute bottom-5 left-5 rounded-xl bg-white/90 px-4 py-3 shadow-sm"><p class="text-xs text-slate-500">Student portfolio</p><p class="font-semibold text-navy">M.4 Admission 2026</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section id="about" class="scroll-mt-24 bg-white py-20 md:py-28">
-      <div class="mx-auto grid max-w-6xl gap-14 px-5 md:grid-cols-2 md:gap-20 lg:px-8">
-        <div>
-          <p class="section-kicker text-sm font-semibold uppercase tracking-[.16em] text-navy">Where &amp; When</p>
-          <h2 class="mt-4 text-3xl font-semibold text-navy sm:text-4xl">ประวัติส่วนตัวและการศึกษา</h2>
-          <p class="mt-6 text-base leading-loose text-slate-600">ผมเป็นนักเรียนจากโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย ที่มีความมุ่งมั่นในการพัฒนาตนเองอย่างต่อเนื่อง โดยเฉพาะในสายวิชาคณิตศาสตร์และวิทยาศาสตร์ รวมถึงการใช้ภาษาอังกฤษในการค้นคว้าข้อมูลและสื่อสาร</p>
-        </div>
-        <div class="relative pl-1">
-          <div class="timeline-line"></div>
-          <div class="relative flex gap-5 pb-9"><span class="timeline-dot mt-1"></span><div><p class="mb-1 text-sm font-semibold text-sky">M.1</p><p class="leading-relaxed text-slate-700">ม.1 - เริ่มต้นค้นคว้าในวิชาคณิตศาสตร์และวิทยาศาสตร์</p></div></div>
-          <div class="relative flex gap-5 pb-9"><span class="timeline-dot mt-1"></span><div><p class="mb-1 text-sm font-semibold text-sky">M.2</p><p class="leading-relaxed text-slate-700">ม.2 - พัฒนาโครงงานวิชาการระดับโรงเรียน</p></div></div>
-          <div class="relative flex gap-5"><span class="timeline-dot mt-1 bg-amber shadow-amber"></span><div><p class="mb-1 text-sm font-semibold text-amber-600">M.3</p><p class="leading-relaxed text-slate-700">ม.3 - แข่งขันและทำโครงงานวิทยาศาสตร์</p></div></div>
-        </div>
-      </div>
-    </section>
+        <!-- ===== About ===== -->
+        <section id="about" class="block white">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>ประวัติส่วนตัวและการศึกษา</h2>
+                </div>
+                <div class="about-grid">
+                    <p class="about-text">ผมเป็นนักเรียนจากโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย ที่มีความมุ่งมั่นในการพัฒนาตนเองอย่างต่อเนื่อง โดยเฉพาะในสายวิชาคณิตศาสตร์และวิทยาศาสตร์ รวมถึงการใช้ภาษาอังกฤษในการค้นคว้าข้อมูลและสื่อสาร</p>
 
-    <section id="skills" class="scroll-mt-24 bg-navy py-20 text-white md:py-28">
-      <div class="mx-auto grid max-w-6xl gap-14 px-5 md:grid-cols-[.75fr_1.25fr] md:gap-24 lg:px-8">
-        <div><p class="section-kicker text-sm font-semibold uppercase tracking-[.16em] text-sky">How I grow</p><h2 class="mt-4 text-3xl font-semibold sm:text-4xl">ทักษะและความถนัด</h2><p class="mt-6 leading-loose text-slate-300">นอกจากทักษะด้านวิชาการแล้ว ยังมีทักษะด้านการแก้ปัญหา (Problem Solving) และการทำงานเป็นทีม (Teamwork)</p></div>
-        <div class="space-y-7">
-          <div><div class="mb-2 flex justify-between text-sm"><span>Mathematics (คณิตศาสตร์)</span><span class="font-semibold text-sky">90%</span></div><div class="h-3 overflow-hidden rounded-full bg-white/15"><div class="progress-fill h-full rounded-full bg-sky" style="--progress: 90%"></div></div></div>
-          <div><div class="mb-2 flex justify-between text-sm"><span>Science (วิทยาศาสตร์)</span><span class="font-semibold text-sky">85%</span></div><div class="h-3 overflow-hidden rounded-full bg-white/15"><div class="progress-fill h-full rounded-full bg-sky" style="--progress: 85%; animation-delay: .15s"></div></div></div>
-          <div><div class="mb-2 flex justify-between text-sm"><span>English (ภาษาอังกฤษ)</span><span class="font-semibold text-amber">95%</span></div><div class="h-3 overflow-hidden rounded-full bg-white/15"><div class="progress-fill h-full rounded-full bg-amber" style="--progress: 95%; animation-delay: .3s"></div></div></div>
-        </div>
-      </div>
-    </section>
+                    <ol class="timeline">
+                        <li>
+                            <span class="tl-badge">ม.1</span>
+                            <span class="tl-text">เริ่มต้นค้นคว้าในวิชาคณิตศาสตร์และวิทยาศาสตร์</span>
+                        </li>
+                        <li>
+                            <span class="tl-badge">ม.2</span>
+                            <span class="tl-text">พัฒนาโครงงานวิชาการระดับโรงเรียน</span>
+                        </li>
+                        <li>
+                            <span class="tl-badge">ม.3</span>
+                            <span class="tl-text">แข่งขันและทำโครงงานวิทยาศาสตร์</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
 
-    <section id="portfolio" class="scroll-mt-24 bg-slate-50 py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-5 lg:px-8"><div class="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><p class="section-kicker text-sm font-semibold uppercase tracking-[.16em] text-navy">What I have done</p><h2 class="mt-4 text-3xl font-semibold text-navy sm:text-4xl">ผลงานเด่นที่ภาคภูมิใจ</h2></div><p class="max-w-xs text-sm leading-relaxed text-slate-500">เรียนรู้จากสิ่งที่ลงมือทำ และเติบโตขึ้นในทุกโครงงาน</p></div>
-        <div class="grid gap-6 md:grid-cols-3">
-          <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1"><div class="grid aspect-[16/10] place-items-center bg-mist text-sky"><i class="fa-solid fa-flask-vial text-5xl"></i></div><div class="p-6"><h3 class="text-xl font-semibold text-navy">รางวัล/โครงงานวิทยาศาสตร์</h3><p class="mt-3 text-sm leading-loose text-slate-600">คำอธิบาย: การทำโครงงานเกี่ยวกับ การพัฒนาเครื่องมือสำหรับติดตามค่าธาตุอาหารหลักที่พืชต้องการในแปลงเพาะปลูกพืช</p></div></article>
-          <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1"><div class="grid aspect-[16/10] place-items-center bg-amber/15 text-amber-600"><i class="fa-solid fa-language text-5xl"></i></div><div class="p-6"><h3 class="text-xl font-semibold text-navy">กิจกรรมค่าย/ภาษาอังกฤษ</h3><p class="mt-3 text-sm leading-loose text-slate-600">คำอธิบาย: เข้าร่วมกิจกรรมทดสอบทักษะภาษาอังกฤษ ASMO2567</p></div></article>
-          <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1"><div class="grid aspect-[16/10] place-items-center bg-navy text-white"><i class="fa-solid fa-lightbulb text-5xl text-sky"></i></div><div class="p-6"><h3 class="text-xl font-semibold text-navy">ผลงานและกิจกรรมอื่น ๆ</h3><p class="mt-3 text-sm leading-loose text-slate-600">พื้นที่สำหรับรวบรวมผลงาน กิจกรรม และประสบการณ์ที่ได้เรียนรู้เพิ่มเติม</p></div></article>
-        </div>
-      </div>
-    </section>
+        <!-- ===== Skills ===== -->
+        <section id="skills" class="block">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>ทักษะและความถนัด</h2>
+                </div>
 
-    <section id="motivation" class="scroll-mt-24 bg-white py-20 md:py-28"><div class="mx-auto max-w-4xl px-5 text-center lg:px-8"><p class="section-kicker text-sm font-semibold uppercase tracking-[.16em] text-navy">Why this path</p><h2 class="mt-4 text-3xl font-semibold text-navy sm:text-4xl">เป้าหมายและแรงบันดาลใจ</h2><p class="mt-8 text-lg leading-loose text-slate-600">ทำไมผมถึงอยากเข้าศึกษาต่อในระดับชั้น ม.4 ที่นี่? เพราะผมเชื่อว่าศักยภาพด้านวิทย์-คณิต-อังกฤษ ของผม จะสามารถต่อยอดและพัฒนาได้อย่างก้าวกระโดดภายใต้สภาพแวดล้อมและหลักสูตรของโรงเรียนแห่งนี้ ผมมีความฝันที่จะนำความรู้ไปประยุกต์ใช้ในสายอาชีพ จิตแพทย์ ในอนาคต</p></div></section>
+                <div class="skills-grid">
+                    <div class="skill">
+                        <div class="ring" style="--v: 90; --c: var(--blue);">
+                            <svg viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="ring-track" cx="60" cy="60" r="52" pathLength="100" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" pathLength="100" />
+                            </svg>
+                            <div class="ring-num"><span>90<small>%</small></span></div>
+                        </div>
+                        <h3>Mathematics (คณิตศาสตร์)</h3>
+                    </div>
 
-    <section id="contact" class="scroll-mt-24 bg-mist py-20 md:py-24"><div class="mx-auto max-w-6xl px-5 lg:px-8"><div class="grid gap-10 md:grid-cols-[.8fr_1.2fr] md:items-center"><div><p class="section-kicker text-sm font-semibold uppercase tracking-[.16em] text-navy">How to reach me</p><h2 class="mt-4 text-3xl font-semibold text-navy sm:text-4xl">ช่องทางการติดต่อ</h2></div><div class="grid gap-4 sm:grid-cols-2"><a class="flex items-center gap-4 rounded-xl border border-white bg-white p-5 shadow-sm transition hover:border-sky" href="mailto:kitchaphat.bua@pccpl.ac.th"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky/15 text-sky"><i class="fa-solid fa-envelope"></i></span><span class="min-w-0"><span class="block text-xs text-slate-500">Email</span><span class="block truncate text-sm font-medium text-navy">kitchaphat.bua@pccpl.ac.th</span></span></a><a class="flex items-center gap-4 rounded-xl border border-white bg-white p-5 shadow-sm transition hover:border-sky" href="tel:0855265354"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-amber/20 text-amber-600"><i class="fa-solid fa-phone"></i></span><span><span class="block text-xs text-slate-500">Phone</span><span class="block text-sm font-medium text-navy">0855265354</span></span></a></div></div></div></section>
-  </main>
+                    <div class="skill">
+                        <div class="ring" style="--v: 85; --c: var(--teal);">
+                            <svg viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="ring-track" cx="60" cy="60" r="52" pathLength="100" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" pathLength="100" />
+                            </svg>
+                            <div class="ring-num"><span>85<small>%</small></span></div>
+                        </div>
+                        <h3>Science (วิทยาศาสตร์)</h3>
+                    </div>
 
-  <footer class="bg-ink px-5 py-6 text-center text-sm text-slate-300"><p>© 2026 กิจพัฒน์ บัวแย้ม. All Rights Reserved.</p></footer>
-  <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const siteMenu = document.getElementById('site-menu');
-    menuToggle.addEventListener('click', () => {
-      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!isOpen));
-      siteMenu.classList.toggle('hidden', isOpen);
-      menuToggle.querySelector('i').className = isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
-    });
-    document.querySelectorAll('.nav-link').forEach((link) => link.addEventListener('click', () => {
-      menuToggle.setAttribute('aria-expanded', 'false');
-      siteMenu.classList.add('hidden');
-      menuToggle.querySelector('i').className = 'fa-solid fa-bars';
-    }));
-  </script>
+                    <div class="skill">
+                        <div class="ring" style="--v: 95; --c: var(--rose);">
+                            <svg viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="ring-track" cx="60" cy="60" r="52" pathLength="100" />
+                                <circle class="ring-fill" cx="60" cy="60" r="52" pathLength="100" />
+                            </svg>
+                            <div class="ring-num"><span>95<small>%</small></span></div>
+                        </div>
+                        <h3>English (ภาษาอังกฤษ)</h3>
+                    </div>
+                </div>
+
+                <p class="skill-note">นอกจากทักษะด้านวิชาการแล้ว ยังมีทักษะด้านการแก้ปัญหา (Problem Solving) และการทำงานเป็นทีม (Teamwork)</p>
+            </div>
+        </section>
+
+        <!-- ===== Portfolio ===== -->
+        <section id="portfolio" class="block white">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>ผลงานเด่นที่ภาคภูมิใจ</h2>
+                    <p>เรียนรู้จากสิ่งที่ลงมือทำ และเติบโตขึ้นในทุกโครงงาน</p>
+                </div>
+
+                <div class="cards">
+                    <article class="card">
+                        <div class="card-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 3h6M10 3v6.2L4.6 18.1A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.7-2.9L14 9.2V3" />
+                                <path d="M7.5 15h9" />
+                            </svg>
+                        </div>
+                        <h3>รางวัล/โครงงานวิทยาศาสตร์</h3>
+                        <p><b>คำอธิบาย:</b> การทำโครงงานเกี่ยวกับ การพัฒนาเครื่องมือสำหรับติดตามค่าธาตุอาหารหลักที่พืชต้องการในแปลงเพาะปลูกพืช</p>
+                    </article>
+
+                    <article class="card c2">
+                        <div class="card-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M3 12h18M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z" />
+                            </svg>
+                        </div>
+                        <h3>กิจกรรมค่าย/ภาษาอังกฤษ</h3>
+                        <p><b>คำอธิบาย:</b> เข้าร่วมกิจกรรมทดสอบทักษะภาษาอังกฤษ ASMO2567</p>
+                    </article>
+
+                    <article class="card c3">
+                        <div class="card-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z" />
+                            </svg>
+                        </div>
+                        <h3>ผลงานและกิจกรรมอื่น ๆ</h3>
+                        <p>พื้นที่สำหรับรวบรวมผลงาน กิจกรรม และประสบการณ์ที่ได้เรียนรู้เพิ่มเติม</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Motivation ===== -->
+        <section id="motivation" class="block">
+            <div class="wrap">
+                <div class="motivation">
+                    <h2>เป้าหมายและแรงบันดาลใจ</h2>
+                    <h3>ทำไมผมถึงอยากเข้าศึกษาต่อในระดับชั้น ม.4 ที่นี่?</h3>
+                    <p>เพราะผมเชื่อว่าศักยภาพด้านวิทย์-คณิต-อังกฤษ ของผม จะสามารถต่อยอดและพัฒนาได้อย่างก้าวกระโดดภายใต้สภาพแวดล้อมและหลักสูตรของโรงเรียนแห่งนี้ ผมมีความฝันที่จะนำความรู้ไปประยุกต์ใช้ในสายอาชีพ จิตแพทย์ ในอนาคต</p>
+                    <span class="dream">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6c-2.3 4.6-9.3 9-9.3 9z" />
+                        </svg>
+                        ความฝัน: จิตแพทย์
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Contact ===== -->
+        <section id="contact" class="block white">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>ช่องทางการติดต่อ</h2>
+                </div>
+
+                <div class="contact-grid">
+                    <a class="contact-card" href="mailto:kitchaphat.bua@pccpl.ac.th">
+                        <span class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                <path d="M3 7l9 6 9-6" />
+                            </svg>
+                        </span>
+                        <span>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">kitchaphat.bua@pccpl.ac.th</div>
+                        </span>
+                    </a>
+
+                    <a class="contact-card" href="tel:0855265354">
+                        <span class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
+                            </svg>
+                        </span>
+                        <span>
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value">0855265354</div>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="wrap">© 2026 กิจพัฒน์ บัวแย้ม. All Rights Reserved.</div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+        }));
+
+        // Fill the skill rings when they scroll into view
+        const rings = document.querySelectorAll('.ring');
+
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+            rings.forEach(r => io.observe(r));
+        } else {
+            rings.forEach(r => r.classList.add('in'));
+        }
+    </script>
 </body>
+
 </html>
